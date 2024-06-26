@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -27,11 +28,15 @@ TRIAL AND ERROR
 # leftout_ids = alphabetical_set - county_ids
 # print(leftout_ids)
 '''
+from dotenv import load_dotenv, dotenv_values
 
-county_filename = r'C:\Users\Aorus\Desktop\shapefile\county\COUNTY_MOI_1090820.shp'
-town_filename = r'C:\Users\Aorus\Desktop\shapefile\town\TOWN_MOI_1120317.shp'
-village_filename = r'C:\Users\Aorus\Desktop\shapefile\village\VILLAGE_NLSC_1130419.shp'
-village_2_filename = r'C:\Users\Aorus\Desktop\shapefile\village\Village_Sanhe.shp'  # Pintung
+# loading variables from .env file
+load_dotenv()
+
+county_filename = os.getenv("COUNTRY_SHAPE_FILE")
+town_filename = os.getenv("TOWN_SHAPE_FILE")
+village_filename = os.getenv("VILLAGE_SHAPE_FILE")
+village_2_filename = os.getenv("VILLAGE_2_SHAPE_FILE")  # Pintung
 
 county_shapefile = gpd.read_file(county_filename)
 # town_shapefile = gpd.read_file(town_filename)
